@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jannah's Quran Academy - Parent Onboarding Infographic</title>
+<!--
+CONFIRMATION: NEITHER Mermaid JS NOR SVG were used anywhere in this output.
+PALETTE: "Vibrant Emerald & Gold" (Primary: #004D40, #C5A059, Background: #FDFCF0, Accents: #FF6B6B, #00E5FF, #FFD54F)
+PLAN SUMMARY:
+1. Introduction: Establishes the academy's welcoming tone and core details.
+2. The Session Structure: Visualizes the 50-minute breakdown to highlight the 1-on-1 focus.
+3. Enrollment Packages: Compares the weekly pricing tiers.
+4. Student Cohorts & Capacity: Breaks down age groups and emphasizes the strict 5-student limit.
+5. The Learning Journey: A flowchart detailing arrival, class flow, and pickup protocols.
+6. Essential Checklist: A structured list of what to bring.
+CHART CHOICES:
+- Data: 50-Minute Session Split -> Goal: Compare -> Chosen Visualization: Donut Chart (Chart.js) -> Justification: Perfectly illustrates the proportion of individualized vs. group time within a single session. NO SVG.
+- Data: Enrollment Pricing -> Goal: Compare -> Chosen Visualization: Bar Chart (Chart.js) -> Justification: Allows parents to quickly evaluate and compare the cost-effectiveness of 1, 2, or 3 sessions per week. NO SVG.
+- Data: Class Capacity -> Goal: Inform -> Chosen Visualization: Pictograph/Styled HTML -> Justification: Clearly represents the strict 5-student maximum using Unicode, ensuring adherence to the NO SVG rule.
+- Data: Arrival/Pickup Protocol -> Goal: Organize -> Chosen Visualization: HTML/CSS Flowchart -> Justification: Organizes the strict operational rules into an easy-to-follow sequence. NO SVG.
+-->
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@300;400;600;700&family=Amiri:wght@700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+    body {
+        font-family: 'Montserrat', sans-serif;
+        background-color: #FDFCF0;
+        color: #1a202c;
+    }
+    h1, h2, h3, .cinzel-font {
+        font-family: 'Cinzel', serif;
+    }
+    .amiri-font {
+        font-family: 'Amiri', serif;
+    }
+    .chart-container {
+        position: relative;
+        width: 100%;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+        height: 350px;
+        max-height: 400px;
+    }
+    @media (max-width: 640px) {
+        .chart-container {
+            height: 250px;
+        }
+    }
+    .material-card {
+        background-color: #ffffff;
+        border-radius: 0.75rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        border: 1px solid #e2e8f0;
+        padding: 1.5rem;
+        height: 100%;
+    }
+    .flow-arrow {
+        font-size: 2rem;
+        color: #C5A059;
+        text-align: center;
+        margin: 0.5rem 0;
+    }
+    .unicode-icon {
+        font-size: 2.5rem;
+        line-height: 1;
+    }
+</style>
+</head>
+<body class="antialiased">
+
+<header class="bg-[#004D40] text-white py-12 px-6 border-b-8 border-[#C5A059] text-center shadow-lg">
+    <div class="amiri-font text-4xl text-[#C5A059] mb-4">السَّلَامُ عَلَيْكُمْ</div>
+    <h1 class="text-4xl md:text-5xl font-bold tracking-wider mb-4 drop-shadow-md">JANNAH'S QURAN ACADEMY</h1>
+    <p class="text-lg md:text-xl font-light text-[#FDFCF0] max-w-2xl mx-auto italic">Parent Onboarding & Curriculum Overview</p>
+    <div class="mt-8 flex flex-wrap justify-center gap-4 text-sm font-semibold tracking-widest text-[#00E5FF]">
+        <span class="bg-black/20 px-4 py-2 rounded-full border border-[#00E5FF]/30">📍 5 Blenril Avenue, Tarneit</span>
+        <span class="bg-black/20 px-4 py-2 rounded-full border border-[#00E5FF]/30">📅 MON, TUE & FRI</span>
+    </div>
+</header>
+
+<main class="max-w-6xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+
+    <div class="md:col-span-2 mb-4">
+        <p class="text-lg text-center max-w-3xl mx-auto leading-relaxed">
+            Welcome to Jannah's Quran Academy! We are dedicated to nurturing your child's love for Allah's words in a "Small Group, Big Care" environment. This interactive guide outlines everything you need to know for a successful term.
+        </p>
+    </div>
+
+    <section class="material-card flex flex-col">
+        <h2 class="text-2xl text-[#004D40] font-bold mb-4 border-b-2 border-[#C5A059] pb-2">The 50-Minute Formula</h2>
+        <p class="text-sm text-gray-600 mb-6 flex-grow">
+            Our sessions run for exactly 50 minutes. We divide this time strictly to ensure every child receives personal attention while also benefiting from collaborative Islamic studies. This chart breaks down how your child's time is invested.
+        </p>
+        <div class="chart-container">
+            <canvas id="sessionChart"></canvas>
+        </div>
+        <div class="mt-4 bg-[#FDFCF0] p-4 rounded-lg border border-[#C5A059]/30 text-sm">
+            <strong class="text-[#004D40]">Key Takeaway:</strong> The critical 10-minute 1-on-1 segment guarantees customized Tajweed and reading coaching, while the 40-minute group activity builds holistic Islamic character.
+        </div>
+    </section>
+
+    <section class="material-card flex flex-col">
+        <h2 class="text-2xl text-[#004D40] font-bold mb-4 border-b-2 border-[#C5A059] pb-2">Enrollment Value</h2>
+        <p class="text-sm text-gray-600 mb-6 flex-grow">
+            We offer flexible term packages to suit your family's schedule and goals. Fees are paid at the start of each term or monthly. Review our weekly rates below to choose the best rhythm for your child's progress.
+        </p>
+        <div class="chart-container">
+            <canvas id="pricingChart"></canvas>
+        </div>
+        <div class="mt-4 bg-[#FDFCF0] p-4 rounded-lg border border-[#C5A059]/30 text-sm">
+            <strong class="text-[#004D40]">Sunday School Alert:</strong> An optional Sunday session is planned for an additional <strong class="text-[#FF6B6B]">$10</strong>. We will notify parents once this is officially organized.
+        </div>
+    </section>
+
+    <section class="material-card md:col-span-2">
+        <h2 class="text-2xl text-[#004D40] font-bold mb-6 border-b-2 border-[#C5A059] pb-2 text-center">Class Dynamics & Demographics</h2>
+        <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
+            To maintain our high standards, classes are strictly capped, and students are separated into age-appropriate cohorts to ensure the teaching style matches their developmental stage.
+        </p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-gradient-to-br from-[#004D40] to-[#00796B] text-white p-6 rounded-xl text-center shadow-md">
+                <div class="unicode-icon mb-4">👶</div>
+                <h3 class="text-xl font-bold text-[#FFD54F] mb-2">Junior Stars</h3>
+                <p class="text-sm opacity-90 uppercase tracking-widest font-semibold mb-2">Ages 5 - 9</p>
+                <p class="text-sm font-light">Focus on foundational literacy, basic Qaida, and making learning the Quran a joyful experience.</p>
+            </div>
+            
+            <div class="bg-gradient-to-br from-[#004D40] to-[#00796B] text-white p-6 rounded-xl text-center shadow-md">
+                <div class="unicode-icon mb-4">🎓</div>
+                <h3 class="text-xl font-bold text-[#FFD54F] mb-2">Youth Scholars</h3>
+                <p class="text-sm opacity-90 uppercase tracking-widest font-semibold mb-2">Ages 9+</p>
+                <p class="text-sm font-light">Focus on advanced Tajweed, Quranic reading fluency, reflection, and deeper Fiqh understanding.</p>
+            </div>
+
+            <div class="bg-[#FDFCF0] border-2 border-[#FF6B6B] p-6 rounded-xl text-center shadow-md flex flex-col justify-center">
+                <div class="unicode-icon mb-2">🛑</div>
+                <h3 class="text-2xl font-bold text-[#004D40] mb-2">Capacity Limit</h3>
+                <div class="flex justify-center space-x-2 text-3xl mb-4 text-[#C5A059]">
+                    <span>👤</span><span>👤</span><span>👤</span><span>👤</span><span>👤</span>
+                </div>
+                <p class="text-sm text-[#FF6B6B] font-bold uppercase">Strict Maximum of 5 Students Per Class</p>
+                <p class="text-xs text-gray-600 mt-2">Ensures zero compromise on personal attention.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="material-card md:col-span-2 bg-[#004D40] text-white">
+        <h2 class="text-2xl text-[#C5A059] font-bold mb-8 border-b-2 border-white/20 pb-2 text-center">The Daily Protocol: Arrival & Pickup</h2>
+        <p class="text-center text-[#FDFCF0] opacity-90 mb-10 max-w-3xl mx-auto">
+            Our 50-minute sessions are highly structured. Because individual lessons are conducted in order of arrival, punctuality is critical. Follow this operational flow.
+        </p>
+
+        <div class="flex flex-col md:flex-row justify-center items-center md:items-start space-y-4 md:space-y-0 md:space-x-4">
+            
+            <div class="bg-white/10 p-6 rounded-lg border border-[#C5A059] w-full md:w-1/4 text-center relative">
+                <div class="text-4xl mb-3">⏰</div>
+                <h4 class="font-bold text-[#FFD54F] uppercase text-sm mb-2">1. Arrive Early</h4>
+                <p class="text-xs">Arrive strictly <strong>5 minutes before</strong> the start time (4 PM or 5 PM).</p>
+            </div>
+
+            <div class="hidden md:block flow-arrow mt-8">➡</div>
+            <div class="block md:hidden flow-arrow">⬇</div>
+
+            <div class="bg-white/10 p-6 rounded-lg border border-[#00E5FF] w-full md:w-1/4 text-center relative">
+                <div class="text-4xl mb-3">📖</div>
+                <h4 class="font-bold text-[#00E5FF] uppercase text-sm mb-2">2. Queue for 1-on-1</h4>
+                <p class="text-xs">Individual coaching begins immediately. <strong>Lessons are taken strictly in order of arrival.</strong> Late arrivals disrupt the flow.</p>
+            </div>
+
+            <div class="hidden md:block flow-arrow mt-8">➡</div>
+            <div class="block md:hidden flow-arrow">⬇</div>
+
+            <div class="bg-white/10 p-6 rounded-lg border border-[#C5A059] w-full md:w-1/4 text-center relative">
+                <div class="text-4xl mb-3">🕌</div>
+                <h4 class="font-bold text-[#FFD54F] uppercase text-sm mb-2">3. Group Activity</h4>
+                <p class="text-xs">After their lesson, students participate in the 40-minute group Islamic Studies activity.</p>
+            </div>
+
+            <div class="hidden md:block flow-arrow mt-8">➡</div>
+            <div class="block md:hidden flow-arrow">⬇</div>
+
+            <div class="bg-white/10 p-6 rounded-lg border border-[#FF6B6B] w-full md:w-1/4 text-center relative">
+                <div class="text-4xl mb-3">🚗</div>
+                <h4 class="font-bold text-[#FF6B6B] uppercase text-sm mb-2">4. Prompt Pickup</h4>
+                <p class="text-xs">Collect your child exactly at the 50-minute mark. <em>Note: Children may leave early after their 1-on-1, but full participation is encouraged.</em></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="material-card">
+        <h2 class="text-2xl text-[#004D40] font-bold mb-4 border-b-2 border-[#C5A059] pb-2">Student Checklist</h2>
+        <p class="text-sm text-gray-600 mb-6">
+            Ensure your child arrives prepared. A prepared student is a focused student.
+        </p>
+        <ul class="space-y-4">
+            <li class="flex items-start bg-gray-50 p-3 rounded-md border-l-4 border-[#004D40]">
+                <span class="text-[#004D40] font-bold text-xl mr-3">✓</span>
+                <div>
+                    <strong class="block text-[#004D40]">Personal Mushaf (Quran)</strong>
+                    <span class="text-xs text-gray-600">Only if they have one. The Academy provides Qaida and all other learning materials.</span>
+                </div>
+            </li>
+            <li class="flex items-start bg-gray-50 p-3 rounded-md border-l-4 border-[#004D40]">
+                <span class="text-[#004D40] font-bold text-xl mr-3">✓</span>
+                <div>
+                    <strong class="block text-[#004D40]">Bottle of Water</strong>
+                    <span class="text-xs text-gray-600">Hydration is key for focus during recitation.</span>
+                </div>
+            </li>
+            <li class="flex items-start bg-gray-50 p-3 rounded-md border-l-4 border-[#004D40]">
+                <span class="text-[#004D40] font-bold text-xl mr-3">✓</span>
+                <div>
+                    <strong class="block text-[#004D40]">Modest Clothing</strong>
+                    <span class="text-xs text-gray-600">Appropriate attire suitable for a Quranic learning environment.</span>
+                </div>
+            </li>
+             <li class="flex items-start bg-gray-50 p-3 rounded-md border-l-4 border-[#004D40]">
+                <span class="text-[#004D40] font-bold text-xl mr-3">✓</span>
+                <div>
+                    <strong class="block text-[#004D40]">Wudu (Ablution)</strong>
+                    <span class="text-xs text-gray-600">Students should arrive in a state of Wudu to handle the texts with Adab.</span>
+                </div>
+            </li>
+        </ul>
+    </section>
+
+    <section class="material-card bg-gradient-to-b from-white to-[#FDFCF0]">
+        <h2 class="text-2xl text-[#004D40] font-bold mb-4 border-b-2 border-[#C5A059] pb-2">Code of Conduct & Support</h2>
+        <p class="text-sm text-gray-600 mb-6">
+            We are partners in your child's education. Clear communication ensures their success.
+        </p>
+        
+        <div class="mb-6">
+            <h4 class="font-bold text-[#C5A059] uppercase tracking-wider text-xs mb-2">Academy Expectations</h4>
+            <div class="bg-[#004D40] text-white p-4 rounded-lg text-sm leading-relaxed shadow-inner">
+                Students must treat teachers and peers with <strong class="text-[#FFD54F]">Adab (Respect)</strong>. Home review tasks are small but essential and must be completed prior to the next session.
+            </div>
+        </div>
+
+        <div>
+            <h4 class="font-bold text-[#C5A059] uppercase tracking-wider text-xs mb-2">Parental Communication</h4>
+            <ul class="text-sm text-gray-700 space-y-2 mb-4">
+                <li>📞 <strong>Updates:</strong> Monthly verbal or WhatsApp progress reports.</li>
+                <li>🌐 <strong>Curriculum:</strong> Track live progress on our website.</li>
+                <li>🛑 <strong>Absences:</strong> Minimum 4-hour advance notice required.</li>
+            </ul>
+            
+            <div class="mt-4 p-4 border-2 border-[#C5A059] border-dashed rounded-lg text-center bg-white">
+                <p class="text-xs text-gray-500 uppercase tracking-widest mb-1">Direct Contact</p>
+                <p class="text-xl font-bold text-[#004D40]">Fawzan Khan: 0434 441 301</p>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="bg-[#1a202c] text-white text-center py-8">
+    <p class="text-[#C5A059] font-bold tracking-widest uppercase mb-2">Jannah's Quran Academy</p>
+    <p class="text-xs opacity-50">"Small Group, Big Care"</p>
+</footer>
+
+<script>
+    const processLabel = (lbl) => {
+        if (lbl.length <= 16) return lbl;
+        const words = lbl.split(' ');
+        const lines = [];
+        let cur = words[0];
+        for (let i = 1; i < words.length; i++) {
+            if (cur.length + words[i].length + 1 > 16) {
+                lines.push(cur);
+                cur = words[i];
+            } else {
+                cur += ' ' + words[i];
+            }
+        }
+        lines.push(cur);
+        return lines;
+    };
+
+    const commonOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            tooltip: {
+                callbacks: {
+                    title: function(tooltipItems) {
+                        const item = tooltipItems[0];
+                        let label = item.chart.data.labels[item.dataIndex];
+                        if (Array.isArray(label)) {
+                            return label.join(' ');
+                        } else {
+                            return label;
+                        }
+                    }
+                }
+            },
+            legend: {
+                labels: {
+                    font: { family: "'Montserrat', sans-serif" },
+                    color: '#1a202c'
+                }
+            }
+        }
+    };
+
+    const sessionLabels = ['1-on-1 Coaching', 'Group Islamic Activity'].map(processLabel);
+    new Chart(document.getElementById('sessionChart').getContext('2d'), {
+        type: 'doughnut',
+        data: {
+            labels: sessionLabels,
+            datasets: [{
+                data: [10, 40],
+                backgroundColor: ['#C5A059', '#004D40'],
+                borderWidth: 2,
+                borderColor: '#ffffff'
+            }]
+        },
+        options: {
+            ...commonOptions,
+            cutout: '65%',
+            plugins: {
+                ...commonOptions.plugins,
+                title: {
+                    display: true,
+                    text: 'The 50-Minute Breakdown',
+                    font: { family: "'Cinzel', serif", size: 16 }
+                }
+            }
+        }
+    });
+
+    const pricingLabels = ['1 Session/Week', '2 Sessions/Week', '3 Sessions/Week'].map(processLabel);
+    new Chart(document.getElementById('pricingChart').getContext('2d'), {
+        type: 'bar',
+        data: {
+            labels: pricingLabels,
+            datasets: [{
+                label: 'Cost per Week (AUD)',
+                data: [20, 35, 45],
+                backgroundColor: ['#80CBC4', '#C5A059', '#004D40'],
+                borderRadius: 6
+            }]
+        },
+        options: {
+            ...commonOptions,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: { display: true, text: 'Price ($)' },
+                    grid: { color: 'rgba(0,0,0,0.05)' }
+                },
+                x: {
+                    grid: { display: false }
+                }
+            },
+            plugins: {
+                ...commonOptions.plugins,
+                legend: { display: false },
+                title: {
+                    display: true,
+                    text: 'Weekly Package Rates',
+                    font: { family: "'Cinzel', serif", size: 16 }
+                }
+            }
+        }
+    });
+</script>
+</body>
+</html>
